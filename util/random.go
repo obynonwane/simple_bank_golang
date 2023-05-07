@@ -63,4 +63,10 @@ func RandomMoney() int64 {
 func RandomCurrency() string {
 	//declaring and initializing a slice - dynamic array
 	currencies := []string{"USD", "EUR", "NG"}
+
+	//get length of the currencies 
+	n := len(currencies)
+
+	//generate a random number between 0 and n - 1 and return the currency at that index
+	return currencies[rand.Intn(n)]
 }
