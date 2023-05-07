@@ -8,24 +8,25 @@ import (
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz"
 func init(){
-	/*Generating a random number from math/rand package between 0-99 
-	using seed and current time to make sure the 
-	numbers are different any time it is run
-	Below seed the random number generator
+	/*
+		Generating a random number from math/rand package between 0-99 
+		using seed and current time to make sure the 
+		numbers are different any time it is run
+		Below seed the random number generator
 	*/
 	rand.Seed(time.Now().UnixNano())
 }
 
 //Generate random number between min & max
 func RandomInt(min, max int64) int64{
-	/*Generates ramdom number between 0 & max-min inclusive*/
+	/* Generates ramdom number between 0 & max-min inclusive */
 	return min + rand.Int63n(max-min+1)
 }
 
 func RandomString(n int) string{
 	/*
-	variable s declared of type strings.Builder type, 
-	this builder is used to concatenate strings together
+		variable s declared of type strings.Builder type, 
+		his builder is used to concatenate strings together
 	*/
 	var sb strings.Builder
 	k := len(alphabet)
@@ -39,9 +40,27 @@ func RandomString(n int) string{
 		*/
 		c := alphabet[rand.Intn(k)]
 
-		/* Concatenate the character c to sb*/
+		/* Concatenate the character c to sb i.e the string builder */
 		sb.WriteByte(c)
 	}
 
-	return "s"
+	/*return string builder content i.e the final string*/
+	return sb.String()
+}
+
+//generate random owner name
+func RandomOwner() string {
+	return RandomString(6)
+}
+
+
+//generate random amount of money
+func RandomMoney() int64 {
+	return RandomInt(0, 1000)
+}
+
+//generate random currency code
+func RandomCurrency() string {
+	//declaring and initializing a slice - dynamic array
+	currencies := []string{"USD", "EUR", "NG"}
 }
